@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>draw circle</title>
+    <!--繪製圓型-->
+    <meta name="description" content="" />
+    <meta name="author" content="hua" />
+ </head>
+<body>
+     <canvas>不支援Canvas。</canvas>
+</body>
+</html>
+<script type="text/javascript">
+(function(){
+    var canvas = document.querySelector('canvas'),
+        context = canvas.getContext('2d');                   
+        
+        canvas.width = 350;
+        canvas.height = 200;
+        var x = 100,
+            y = 100,
+            radius = 50,
+            starAngle = 0,
+            endAngle = Math.PI * 2 ;  //
+        //fill
+        context.beginPath();    //開始路徑
+        context.arc(x, y, radius, starAngle, endAngle, false);  //繪製圓型
+        context.closePath();    //關閉路徑
+        context.fillStyle = "rgba(88,178,220,0.5)";     //對路徑填色
+        context.fill();
+        
+        //stroke
+        context.beginPath();    //開始路徑
+        context.arc(250, 100, 50, 0, Math.PI*2, false);  //繪製圓型
+        context.closePath();    //關閉路徑
+        context.stroke();
+}()); 
+</script>

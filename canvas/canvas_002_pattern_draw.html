@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>canvas_pattern</title>
+    <meta name="description" content="" />
+    <meta name="author" content="ocean" />
+    <style>
+    canvas {
+        border : 1px solid #ACACAC;
+    }
+    </style>
+    </head>
+<body>
+     <canvas>不支援Canvas。</canvas>
+     <img id="outImg" style="display: none">
+</body>
+</html>
+<script type="text/javascript">
+(function(){
+    
+    var dreamPattern = function(e){
+         var pattern = context.createPattern(img,'repeat');
+             context.fillStyle = pattern;
+             context.fillRect(0,0,canvas.width,canvas.height);    
+    };
+
+    var canvas = document.querySelector('canvas'),
+        context = canvas.getContext('2d'),
+        img =document.querySelector('#outImg');  
+        
+        canvas.width = 300;
+        canvas.height = 300;   
+        
+        img.addEventListener('load', dreamPattern , false);
+        img.src = "../images/html5.png";          
+ 
+ 
+    
+ 
+    
+}()); 
+</script>

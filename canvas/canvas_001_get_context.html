@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>get canvas context</title>
+    <meta name="description" content="" />
+    <meta name="author" content="hua" />
+</head>
+<body>
+     <canvas class="myCanvas" width="50" height="50">不支援Canvas。 </canvas> 
+</body>
+</html>
+<script type="text/javascript">
+(function(dom){
+    var canvas = dom.querySelector(".myCanvas");
+        context = canvas.getContext('2d'); 
+        console.log(canvas);
+        console.log(context);
+}(document)); 
+</script>

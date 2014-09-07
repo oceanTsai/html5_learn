@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>pixelation2</title>
+    <meta name="description" content="" />
+    <meta name="author" content="hua" />
+ </head>
+<body style="background: black">
+     <canvas id="myCanvas">不支援Canvas。</canvas>     
+</body>
+</html>
+<script type="text/javascript">
+(function(){
+    var canvas,context,img = new Image(),imgDatas=[],frame=0;
+    var init = function(){
+        canvas = document.querySelector('#myCanvas');        
+        context = canvas.getContext('2d');       
+        img.addEventListener('load' ,loadHandler , false);
+        img.src = "../images/ocean.jpg";   
+    };
+    
+    var loadHandler = function(e){
+        //console.log(canvas);
+        canvas.width = img.width;
+        canvas.height = img.height;
+        //context.drawImage(image, sx, sy, sw, sh, dx, dy, dw, dh)
+        context.drawImage(img, 0, 0, img.width, img.height, 0, 0, canvas.width, canvas.height);  
+        var imageData = context.getImageData(0, 0, canvas.width, canvas.height); 
+        var pixels = imageData.data; 
+ 
+        context.clearRect(0, 0, canvas.width, canvas.height); 
+ 
+        var numTileRows = 50; 
+        var numTileCols = 50; 
+ 
+        var tileWidth = imageData.width/numTileCols; 
+        var tileHeight = imageData.height/numTileRows; 
+ 
+        for (var r = 0; r < numTileRows; r++) { 
+                for (var c = 0; c < numTileCols; c++) { 
+                     var x = (c*tileWidth)+(tileWidth/2); 
+                     var y = (r*tileHeight)+(tileHeight/2);                     
+                     var pos = (Math.floor(y)*(imageData.width*4))+(Math.floor(x)*4); 
+                     var red = pixels[pos]; 
+                     var green = pixels[pos+1]; 
+                     var blue = pixels[pos+2]; 
+                     
+                    context.fillStyle = "rgb("+red+", "+green+", "+blue+")"; 
+                    //繪製方式換成圓
+                    context.beginPath(); 
+                    context.arc(x, y, tileWidth/2, 0, Math.PI*2, false); 
+                    context.closePath(); 
+                    context.fill(); 
+                }; 
+        }; 
+
+    };  
+    init();
+}()); 
+</script>

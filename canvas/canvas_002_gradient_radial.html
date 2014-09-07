@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>放射漸層</title>
+    <meta name="description" content="" />
+    <meta name="author" content="hua" />
+ </head>
+<body>
+     <canvas>不支援Canvas。</canvas>
+</body>
+</html>
+<script type="text/javascript">
+(function(){
+    var canvas = document.querySelector('canvas'),
+        context = canvas.getContext('2d');  
+        
+        canvas.width = 300;
+        canvas.height = 200;
+        
+    var canvasCentreX = canvas.width / 2; 
+    var canvasCentreY = canvas.height / 2;         
+    
+    var gradient = context.createRadialGradient(canvasCentreX, canvasCentreY, 0, 
+        canvasCentreX, canvasCentreY, 250);
+        gradient.addColorStop(0, "rgb(0, 0, 0)"); 
+        gradient.addColorStop(1, "rgb(150, 150, 150)");         
+        context.fillStyle = gradient; 
+        context.fillRect(0, 0, canvas.width, canvas.height); 
+}()); 
+</script>

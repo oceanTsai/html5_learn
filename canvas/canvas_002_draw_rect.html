@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>draw rect</title>
+    <!--繪製矩形-->
+    <meta name="description" content="" />
+    <meta name="author" content="hua" />
+ </head>
+<body>
+     <canvas>不支援Canvas。</canvas>
+</body>
+</html>
+<script type="text/javascript">
+(function(){
+    var canvas = document.querySelector('canvas'),
+        context = canvas.getContext('2d');                   
+        
+        canvas.width = 350;
+        canvas.height = 200;
+        
+        var x = 10;
+        var y = 10;
+        var width = 150;
+        var height = 100;
+        var gap = 10;
+       
+        //fill
+        context.beginPath(); 
+        context.rect(x, y, width, height);
+        context.closePath();    //關閉路徑
+        context.fillStyle="#028760";
+        context.fill();
+        
+        //stroke
+        context.beginPath(); 
+        context.rect( (x + width + gap) , y, width, height);
+        context.closePath();    //關閉路徑           
+        context.strokeStyle="#028760";     
+        context.stroke();
+}()); 
+</script>

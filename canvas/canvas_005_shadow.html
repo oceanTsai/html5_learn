@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>canvas_shadow</title>
+    <meta name="description" content="" />
+    <meta name="author" content="hua" />
+    <style>
+        canvas {
+            background-color : black;
+        }
+    </style>
+ </head>
+<body>
+     <canvas>不支援Canvas。</canvas>
+</body>
+</html>
+<script type="text/javascript">
+(function(){
+    var canvas = document.querySelector('canvas'),
+        context = canvas.getContext('2d');                   
+        
+        canvas.width = 350;
+        canvas.height = 200;
+        
+        //moon blue
+        context.shadowBlur = 50; //模糊強度  (製造光暈)
+        context.shadowColor = "rgba(255, 255, 255 ,0.8)";  //也可以使用rag(r,g,b)  or  直接給色碼
+        context.beginPath();    //開始路徑
+        context.arc(100, 100, 50, 0, Math.PI*2, false);  //繪製圓型
+        context.closePath();    //關閉路徑
+        context.fillStyle = "rgba(88,178,220,0.5)";     //對路徑填色
+        context.fill();
+        
+        //monn yellow
+        context.shadowBlur = 60; //模糊強度
+        context.shadowColor = "rgba(225, 225, 225 ,0.9)";  //也可以使用rag(r,g,b)  or  直接給色碼
+        context.shadowOffsetX = 10; //陰影 x 偏移
+        context.shadowOffsetY = -5; //陰影 y 偏移
+        context.beginPath();
+        context.arc(250, 100, 60, 0, Math.PI*2, false);
+        context.closePath();
+        context.fillStyle = "rgba(251,226,81,0.6)";
+        context.fill(); 
+         
+}()); 
+</script>

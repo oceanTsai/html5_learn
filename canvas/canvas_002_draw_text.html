@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>draw text</title>
+    <meta name="description" content="" />
+    <meta name="author" content="hua" />
+ </head>
+<body>
+     <canvas>不支援Canvas。</canvas>
+</body>
+</html>
+<script type="text/javascript">
+(function(){
+    var canvas = document.querySelector('canvas'),
+        context = canvas.getContext('2d');                   
+        
+        canvas.width = 350;
+        canvas.height = 200;
+        
+        var text = "雲端設計部!"; 
+        context.font = "italic 40px serif"; 
+        //context.strokeText(text,x,y,maxWidth);
+        context.strokeText(text, 10, 40); 
+        context.fillText(text,10 , 85);
+        
+        //線性漸層
+        //context.createLinearGradient(x0,y0,x1,y1);
+        var gradient = context.createLinearGradient(0,0,canvas.width,0);
+        //gradient.addColorStop(stop,color);   //stop value 0 ~ 1
+        gradient.addColorStop("0","magenta");
+        gradient.addColorStop("0.5","blue");
+        gradient.addColorStop("1.0","red");
+        context.strokeStyle = gradient;
+        context.strokeText(text ,10, 125);
+        context.fillStyle = gradient;
+        context.fillText(text,10 , 165);         
+      
+}()); 
+</script>

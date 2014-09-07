@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>橡皮擦</title>
+    <meta name="description" content="" />
+    <meta name="author" content="hua" />
+    <style>
+        canvas {
+            border : 1px solid #ACACAC;
+        }
+    </style>
+ </head>
+<body>
+     <canvas>不支援Canvas。</canvas>
+</body>
+</html>
+<script type="text/javascript">
+(function(){
+    var canvas = document.querySelector('canvas'),
+        context = canvas.getContext('2d');                   
+        
+        canvas.width = 800;
+        canvas.height = 400;
+        
+    var rectX = 20;
+    var rectY = 20;
+    var rectWidth = 200;
+    var rectHeight = 200;
+       
+       
+        context.beginPath(); 
+        context.rect(rectX, rectY, rectWidth, rectHeight);
+        context.closePath();    //關閉路徑
+  
+        
+        context.fillStyle="#4d5aaf";
+        context.fill();
+   
+        context.clearRect(50, 0, 40, 40);
+        context.clearRect(50, 80, 40, 40); 
+
+       
+}()); 
+</script>
